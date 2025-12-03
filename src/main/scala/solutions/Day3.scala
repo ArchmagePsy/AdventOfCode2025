@@ -3,11 +3,11 @@ package solutions
 import scala.io.Source
 import scala.collection.immutable.TreeSeqMap.OrderBy
 
-case class Bank(val cells: List[Int]) {
+class Bank(val cells: List[Int]) {
     def getMaxJoltageFor(numberOfCells: Int): BigInt = {
         var offset: Int = -1
         var end: Int = numberOfCells - 1
-        BigInt((0 until numberOfCells).flatMap { _ => 
+        BigInt((0 until numberOfCells).map { _ => 
             val maxCell: Tuple2[Int, Int] = cells.zipWithIndex.slice(offset + 1, cells.length - end).maxBy((value, index) => value)
             
             offset = maxCell._2
