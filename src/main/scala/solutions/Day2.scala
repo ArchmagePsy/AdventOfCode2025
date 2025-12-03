@@ -23,14 +23,14 @@ def basicInvalidID(id: String): Boolean = {
     return false
 }
 
-def parse(range: String): NumericRange[BigInt] = {
+def parseRange(range: String): NumericRange[BigInt] = {
     val pair: Array[String] = range.split("-")
     NumericRange.inclusive(BigInt(pair(0)), BigInt(pair(1)), BigInt(1))
 }
 
 def loadRanges: List[NumericRange[BigInt]] = {
     val inputLines: Iterator[String] = Source.fromResource("day2.inputs").getLines()
-    inputLines.flatMap(line => line.split(",")).map(parse(_)).toList
+    inputLines.flatMap(line => line.split(",")).map(parseRange(_)).toList
 }
 
 @main def day2(): Unit = {

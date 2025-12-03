@@ -79,7 +79,7 @@ class Combination(val rotations: List[Rotation]) {
 }
 
 
-def parse(line: String): Rotation = {
+def parseCombination(line: String): Rotation = {
     val direction: Direction = line.charAt(0) match
         case 'L' => Direction.LEFT
         case 'R' => Direction.RIGHT
@@ -91,7 +91,7 @@ def parse(line: String): Rotation = {
 
 def loadCombination: Combination = {
     val inputLines: Iterator[String] = Source.fromResource("day1.inputs").getLines()
-    Combination(inputLines.map(parse(_)).toList)
+    Combination(inputLines.map(parseCombination(_)).toList)
 }
 
 @main def day1(): Unit =  {
