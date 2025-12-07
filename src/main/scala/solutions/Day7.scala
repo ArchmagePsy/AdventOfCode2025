@@ -24,7 +24,7 @@ class Manifold(manifoldRows: Array[Array[ManifoldPart]]) {
         var beams: List[ManifoldPart] = manifoldRows(0).map(part => if part == ManifoldPart.EMITTER then ManifoldPart.BEAM else ManifoldPart.NONE).toList
         var splits: Int = 0
 
-        manifoldRows.slice(1, manifoldRows.length).foreach { row =>
+        manifoldRows.tail.foreach { row =>
             row.zipWithIndex.foreach { (part, index) =>
                 if part == ManifoldPart.SPLITTER && beams(index) == ManifoldPart.BEAM then
                     beams = beams.updated(index, ManifoldPart.NONE)
